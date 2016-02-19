@@ -1,0 +1,45 @@
+.jumbotron {
+  color: black;
+  font-family: 'Lobster', cursive;
+  font-size: 80px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 300;
+  padding: 20px;
+  line-height: 26.3999996185303px;
+  text-align: center;
+}
+
+.picture {
+  border-radius: 50%;
+  width: 10em;
+}
+
+.navbar .nav li > a:hover {
+  background-color: #346392;
+  border-radius: 5px;
+}
+
+.navbar .nav li > a:active {
+  background-color: #27496d;
+  border-radius: 5px;
+}
+
+.nav li {
+  display: inline;
+  margin: 10px;
+  border-radius: 5px;
+  wide: 80%;
+  background-color: #6496c8;
+}
+
+.nav {
+  text-align: center;
+}
+
+.nav li a {
+  font-size: 30px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  color: white;
+}

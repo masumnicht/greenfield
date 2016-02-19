@@ -1,12 +1,29 @@
 var express = require('express');
-var mongoose = require('mongoose');
-
 var app = express();
+var port = process.env.PORT || 8000;
 
-mongoose.connect('mongodb://localhost/voter');
+require('./config/middleware.js')(app, express);
 
-require('./middleware.js')(app, express);
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
 
-app.listen(8000);
+server.listen(port);
+
+var storage = {};
+
+io.on('connection', function (socket) {
+  socket.on('init', function (data) {
+    socket.join('/'+data);
+    storage[data] = {};
+    socket.on('userData', function (info) {
+      storage[data][info.id] = info;
+      socket.emit('serverData', storage[data]);
+    });
+    socket.on('logout', function (info) {
+      delete storage[data][info];
+      socket.leave('/'+data);
+    })
+  });
+});
 
 module.exports = app;
